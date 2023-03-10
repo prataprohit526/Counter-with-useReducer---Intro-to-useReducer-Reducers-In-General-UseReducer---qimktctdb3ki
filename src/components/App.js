@@ -1,14 +1,24 @@
-import React, { useReducer } from 'react'
-import { counterReducer } from '../reducers/counterReducer';
-import '../styles/App.css';
-const App = () => {
-const [state,dispatch] = useReducer(counterReducer,{/*initial state to be placed here*/})
-  return (
-    <div id="main">
+import React, { useReducer } from 'react';
+import counterReducer from './reducers/counterReducer';
 
+function CounterApp() {
+  const [counterState, dispatch] = useReducer(counterReducer, 0);
+
+  const handleIncrement = () => {
+    dispatch({ type: 'INCREMENT' });
+  };
+
+  const handleDecrement = () => {
+    dispatch({ type: 'DECREMENT' });
+  };
+
+  return (
+    <div>
+      <span id="counter">{counterState}</span>
+      <button id="increment-btn" onClick={handleIncrement}>Increment</button>
+      <button id="decrement-btn" onClick={handleDecrement}>Decrement</button>
     </div>
-  )
+  );
 }
 
-
-export default App;
+export default CounterApp;

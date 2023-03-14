@@ -1,13 +1,11 @@
-function counterReducer(state, action) {
-    switch (action.type) {
-      case 'INCREMENT':
-        return state + 1;
-      case 'DECREMENT':
-        return state - 1;
-      default:
-        throw new Error(`Unsupported action type: ${action.type}`);
-    }
+const counterReducer = (state, action) => {
+  console.log(action.type);
+  if (action.type === "inc") {
+      return state + 1;
   }
-  
-  export default counterReducer;
-  
+  if (action.type === "dec") {
+      return state - 1;
+  }
+};
+
+export { counterReducer };
